@@ -113,7 +113,7 @@ function enterActivity() {
                 randomClick(huodong.centerX(), huodong.centerY());
 				sleep(150);
 				randomClick(huodong.centerX(), huodong.centerY());
-                sleep(1000);
+                sleep(10000);
  
             }
  
@@ -433,15 +433,15 @@ function viewAndFollow() {
  
 /**
  * 自动判断程序是否卡顿，恢复方法
- * 判断依据：1.不在活动界面 2.停留某个界面长达30s
+ * 判断依据：1.停留某个界面长达60s
  * @returns 
  */
 function recoverApp() {
-    if (!text("累计任务奖励").exists() && JUDGE_TIME > 30) {
+    if (JUDGE_TIME > 60) {
         if (back()) {
             // 计时器重置
             JUDGE_TIME = 0;
-            console.warn("停留某个页面超过30s,自动返回，重置定时器。");
+            console.warn("停留某个页面超过60s,自动返回，重置定时器。");
             return true;
         }
     } else {
